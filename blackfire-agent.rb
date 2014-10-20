@@ -2,14 +2,14 @@ require 'formula'
 
 class BlackfireAgent < Formula
     homepage 'https://blackfire.io'
-    version '0.18.0'
+    version '0.18.1'
 
     if MacOS.prefer_64_bit?
-        url 'http://packages.blackfire.io/homebrew/blackfire-agent_0.18.0_amd64.tar.gz'
-        sha1 '91301087647f32816249a1100abe00410247c624'
+        url 'http://packages.blackfire.io/homebrew/blackfire-agent_0.18.1_amd64.tar.gz'
+        sha1 'c215f1ccf2742a31ed9050fc9ba3150655b17348'
     else
-        url 'http://packages.blackfire.io/homebrew/blackfire-agent_0.18.0_386.tar.gz'
-        sha1 'd79333dc3bbd43a9259894ee85eaf919a195d6af'
+        url 'http://packages.blackfire.io/homebrew/blackfire-agent_0.18.1_386.tar.gz'
+        sha1 'de6f76d84955025c10b0499d47dfac45e3960cd3'
     end
 
     depends_on :arch => :intel
@@ -71,8 +71,8 @@ class BlackfireAgent < Formula
 
         If this is an upgrade and you are using launchd, \033[32mdo not forget to reload the Agent service\033[0m
 
-        launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.blackfire-agent-internal.plist
-        launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.blackfire-agent-internal.plist
+        launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.blackfire-agent.plist
+        launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.blackfire-agent.plist
 
         If this is an install:
         EOS
