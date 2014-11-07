@@ -3,10 +3,10 @@ require File.join(File.dirname(__FILE__), 'blackfire-php-extension')
 class BlackfirePhp54 < BlackfirePhpExtension
     init
     homepage "https://blackfire.io"
-    version '0.16.0'
+    version '0.16.2'
 
-    url 'http://packages.blackfire.io/homebrew/blackfire-php_0.16.0-darwin_amd64-php54.tar.gz'
-    sha1 '3e8c9de6b6f701600803d7cb1715964d1eec86f1'
+    url 'http://packages.blackfire.io/homebrew/blackfire-php_0.16.2-darwin_amd64-php54.tar.gz'
+    sha1 '77bc9b32c05dcbcfd379d1ae1396e97fc676f953'
 
     def install
         prefix.install "blackfire.so"
