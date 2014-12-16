@@ -2,20 +2,21 @@ require 'formula'
 
 class BlackfireAgent < Formula
     homepage 'https://blackfire.io'
-    version '0.18.8'
+    version '0.19.0'
 
     if MacOS.prefer_64_bit?
-        url 'http://packages.blackfire.io/homebrew/blackfire-agent_0.18.8_amd64.tar.gz'
-        sha1 '4b134d61918f4a1d71389bac7629bd5da711b5eb'
+        url 'http://packages.blackfire.io/homebrew/blackfire-agent_0.19.0_amd64.tar.gz'
+        sha1 '78fb114e1f1536a02136fb9bfcc39306b9f444ac'
     else
-        url 'http://packages.blackfire.io/homebrew/blackfire-agent_0.18.8_386.tar.gz'
-        sha1 'b113f645b162b0f175c6ccd311f17288e667381c'
+        url 'http://packages.blackfire.io/homebrew/blackfire-agent_0.19.0_386.tar.gz'
+        sha1 'f08d61c9b938a736c851562cfa5248824a61080d'
     end
 
     depends_on :arch => :intel
 
     def install
         bin.install 'usr/bin/blackfire-agent'
+        bin.install 'usr/bin/blackfire'
         man1.install 'usr/share/man/man1/blackfire-agent.1.gz'
         sl_etc = etc + 'blackfire'
         sl_etc.mkpath unless sl_etc.exist?
