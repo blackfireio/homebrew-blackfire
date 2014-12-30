@@ -1,6 +1,6 @@
-require File.join(File.dirname(__FILE__), 'blackfire-php-extension')
+require File.expand_path("../../Abstract/abstract-blackfire-php-extension", __FILE__)
 
-class BlackfirePhp55 < BlackfirePhpExtension
+class BlackfirePhp55 < AbstractBlackfirePhpExtension
     init
     homepage "https://blackfire.io"
     version '0.18.0'

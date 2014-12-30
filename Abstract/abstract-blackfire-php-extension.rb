@@ -21,7 +21,7 @@ class InvalidPhpizeError < RuntimeError
   end
 end
 
-class BlackfirePhpExtension < Formula
+class AbstractBlackfirePhpExtension < Formula
   def initialize(*)
     super
 
@@ -172,28 +172,28 @@ EOS
   end
 end
 
-class BlackfirePhp53Extension < BlackfirePhpExtension
+class BlackfirePhp53Extension < AbstractBlackfirePhpExtension
   def self.init opts=[]
     super()
     depends_on "php53" => opts if build.with?('homebrew-php')
   end
 end
 
-class BlackfirePhp54Extension < BlackfirePhpExtension
+class BlackfirePhp54Extension < AbstractBlackfirePhpExtension
   def self.init opts=[]
     super()
     depends_on "php54" => opts if build.with?('homebrew-php')
   end
 end
 
-class BlackfirePhp55Extension < BlackfirePhpExtension
+class BlackfirePhp55Extension < AbstractBlackfirePhpExtension
   def self.init opts=[]
     super()
     depends_on "php55" => opts if build.with?('homebrew-php')
   end
 end
 
-class BlackfirePhp56Extension < BlackfirePhpExtension
+class BlackfirePhp56Extension < AbstractBlackfirePhpExtension
   def self.init opts=[]
     super()
     depends_on "php56" => opts if build.with?('homebrew-php')
