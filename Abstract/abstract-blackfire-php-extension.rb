@@ -11,14 +11,14 @@ class UnsupportedPhpApiError < RuntimeError
   end
 end
 
-class InvalidPhpizeError < RuntimeError
+class InvalidPhpVersionError < RuntimeError
   attr :name
 
   def initialize (installed_php_version, required_php_version)
     @name = name
     super <<-EOS.undent
-      Version of phpize (PHP#{installed_php_version}) in $PATH does not support building this extension
-             version (PHP#{required_php_version}). Consider installing  with the `--without-homebrew-php` flag.
+      Version of PHP (#{installed_php_version}) in $PATH does not support this extension
+             version (#{required_php_version}). Consider installing blackfire-php-#{installed_php_version} with the `--without-homebrew-php` flag.
     EOS
   end
 end
@@ -28,19 +28,11 @@ class AbstractBlackfirePhpExtension < Formula
     super
 
     if build.without? 'homebrew-php'
-      installed_php_version = nil
-      i = IO.popen("#{phpize} -v")
-      out = i.readlines.join("")
-      i.close
-      { 53 => 20090626, 54 => 20100412, 55 => 20121113, 56 => 220131226 }.each do |v, api|
-        installed_php_version = v.to_s if out.match(/#{api}/)
-      end
-
-      raise UnsupportedPhpApiError.new(i.readlines.join("\n")) if installed_php_version.nil?
+      installed_php_version = php_version
 
       required_php_version = php_branch.sub('.', '').to_s
       unless installed_php_version == required_php_version
-        raise InvalidPhpizeError.new(installed_php_version, required_php_version)
+        raise InvalidPhpVersionError.new(installed_php_version, required_php_version)
       end
     end
   end
@@ -66,20 +58,19 @@ class AbstractBlackfirePhpExtension < Formula
     'php' + php_branch.sub('.', '')
   end
 
-  def safe_phpize
-    cmd = ''
-    cmd << "PHP_AUTOCONF=\"#{Formula['autoconf'].opt_prefix}/bin/autoconf\" "
-    cmd << "PHP_AUTOHEADER=\"#{Formula['autoconf'].opt_prefix}/bin/autoheader\" "
-    cmd << phpize
+  def php_version
+    i = IO.popen("#{php_binary} -r 'echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;'")
+    out = i.readlines.join("")
+    i.close
 
-    system cmd
+    out
   end
 
-  def phpize
+  def php_binary
     if build.without? 'homebrew-php'
-      "phpize"
+      "php"
     else
-      "#{(Formula[php_formula]).bin}/phpize"
+      "#{(Formula[php_formula]).bin}/php"
     end
   end
 
@@ -88,14 +79,6 @@ class AbstractBlackfirePhpExtension < Formula
       "php.ini presented by \033[32mphp --ini\033[0m"
     else
       "#{(Formula[php_formula]).config_path}/php.ini"
-    end
-  end
-
-  def phpconfig
-    if build.without? 'homebrew-php'
-      ""
-    else
-      "--with-php-config=#{(Formula[php_formula]).bin}/php-config"
     end
   end
 
