@@ -46,12 +46,16 @@ class AbstractBlackfirePhpExtension < Formula
   end
 
   def php_branch
-    matches = /Php5([3-9]+)/.match(self.class.name)
+    matches = /Php([57]\d+)/.match(self.class.name)
     if matches
-      "5." + matches[1]
+      matches[1][0] + "." + matches[1][1,matches[1].length-1]
     else
       raise "Unable to guess PHP branch for #{self.class.name}"
     end
+  end
+
+  def is_zts
+    self.class.name =~ /Php\d+Zts$/
   end
 
   def php_formula
@@ -126,6 +130,24 @@ class AbstractBlackfirePhpExtension < Formula
   * - If you see it, you have been successful!
 EOS
 
+    if is_zts
+      caveats << <<-EOS
+  \033[33m* We have detected you have PHP with ZTS enabled.
+  * Please note that ZTS support is in beta.\033[0m
+  * Therefore, please contact us on https://blackfire.io using
+  * the Feedback button if you experience any trouble.
+EOS
+    end
+
+    if php_branch == "7.0"
+      caveats << <<-EOS
+  \033[33m* We have detected you use PHP 7.0.
+  * Please note that PHP 7.0 support is in beta.\033[0m
+  * Therefore, please contact us on https://blackfire.io using
+  * the Feedback button if you experience any trouble.
+EOS
+    end
+
     caveats.join("\n")
   end
 
@@ -182,5 +204,12 @@ class BlackfirePhp56Extension < AbstractBlackfirePhpExtension
   def self.init opts=[]
     super()
     depends_on "php56" => opts if build.with?('homebrew-php')
+  end
+end
+
+class BlackfirePhp70Extension < AbstractBlackfirePhpExtension
+  def self.init opts=[]
+    super()
+    depends_on "php70" => opts if build.with?('homebrew-php')
   end
 end
