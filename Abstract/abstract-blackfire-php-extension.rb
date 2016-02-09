@@ -106,45 +106,48 @@ class AbstractBlackfirePhpExtension < Formula
   end
 
   def caveats
-    caveats = [ "To finish installing #{extension} for PHP #{php_branch}:" ]
+    caveats = [ "To finish installing #{extension} for PHP #{php_branch}:", "" ]
 
     if (build.without? "config-file") || (build.without? "homebrew-php")
-      caveats << "  * Add the following lines to #{phpini}:\n"
+      caveats << "* Add the following lines to #{phpini}:\n"
       caveats << config_file
     else
-      caveats << "  * #{config_scandir_path}/#{config_filename} was created,"
-      caveats << "    do not forget to remove it upon extension removal."
+      caveats << "* #{config_scandir_path}/#{config_filename} was created,"
+      caveats << "  do not forget to remove it upon extension removal."
     end
 
     caveats << <<-EOS
-  * Validate installation via one of the following methods:
-  *
-  * Using PHP from a webserver:
-  * - \033[32mRestart your webserver or PHP-fpm\033[0m.
-  * - Write a PHP page that calls "phpinfo();"
-  * - Load it in a browser and look for the info on the "#{extension}" module.
-  * - If you see it, you have been successful!
-  *
-  * Using PHP from the command line:
-  * - Run \033[32mphp -m | grep blackfire\033[0m
-  * - If you see it, you have been successful!
+
+* Validate installation via one of the following methods:
+
+  Using PHP from a webserver:
+
+  - \033[32mRestart your webserver or PHP-fpm\033[0m.
+  - Write a PHP page that calls "phpinfo();"
+  - Load it in a browser and look for the info on the "#{extension}" module.
+  - If you see it, you have been successful!
+
+  Using PHP from the command line:
+
+  - Run \033[32mphp --ri blackfire\033[0m
+  - If the "#{extension}" configuration is displayed, you have been successful!
 EOS
 
     if is_zts
       caveats << <<-EOS
-  \033[33m* We have detected you have PHP with ZTS enabled.
-  * Please note that ZTS support is in beta.\033[0m
-  * Therefore, please contact us on https://blackfire.io using
-  * the Feedback button if you experience any trouble.
+\033[33m* We have detected you have PHP with ZTS enabled.
+ Please note that ZTS support is in beta.\033[0m
+ Therefore, please contact us on https://blackfire.io using
+ the Feedback button if you experience any trouble.
 EOS
     end
 
     if php_branch == "7.0"
       caveats << <<-EOS
-  \033[33m* We have detected you use PHP 7.0.
-  * Please note that PHP 7.0 support is in beta.\033[0m
-  * Therefore, please contact us on https://blackfire.io using
-  * the Feedback button if you experience any trouble.
+\033[33m* We have detected you use PHP 7.0.
+ Please note that PHP 7.0 support is in beta.\033[0m
+ Therefore, please contact us on https://blackfire.io using
+ the Feedback button if you experience any trouble.
 EOS
     end
 
