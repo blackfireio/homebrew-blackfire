@@ -142,15 +142,6 @@ EOS
 EOS
     end
 
-    if php_branch == "7.0"
-      caveats << <<-EOS
-\033[33m* We have detected you use PHP 7.0.
- Please note that PHP 7.0 support is in beta.\033[0m
- Therefore, please contact us on https://blackfire.io using
- the Feedback button if you experience any trouble.
-EOS
-    end
-
     caveats.join("\n")
   end
 
