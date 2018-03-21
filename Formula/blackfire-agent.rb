@@ -4,14 +4,14 @@ require 'formula'
 
 class BlackfireAgent < Formula
     homepage 'https://blackfire.io'
-    version '1.15.0'
+    version '1.16.0'
 
     if MacOS.prefer_64_bit?
-        url 'http://packages.blackfire.io/homebrew/blackfire-agent_1.15.0_amd64.tar.gz'
-        sha256 'fd5da6e3792ee5dbbd9506940a87c043520f969246174015c4ca660c86aa55b0'
+        url 'http://packages.blackfire.io/homebrew/blackfire-agent_1.16.0_amd64.tar.gz'
+        sha256 '968c7b0094ca50a6e802a0002eba687c5deddf2a39cbb948fcccde9ac28258f5'
     else
-        url 'http://packages.blackfire.io/homebrew/blackfire-agent_1.15.0_386.tar.gz'
-        sha256 '235f6fc6d486607bf55ad1cf3da15d6acd809fa08862e020be506c7d98251541'
+        url 'http://packages.blackfire.io/homebrew/blackfire-agent_1.16.0_386.tar.gz'
+        sha256 '62f24104d5f5e63991806b1cf22b2fe204249f0376f58c12b33796f191c0eaa8'
     end
 
     depends_on :arch => :intel
@@ -37,7 +37,7 @@ class BlackfireAgent < Formula
         watchdir.mkpath unless watchdir.exist?
     end
 
-    def plist; <<-EOS.undent
+    def plist; <<~EOS
         <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
             <plist version="1.0">
@@ -64,7 +64,7 @@ class BlackfireAgent < Formula
     end
 
     def caveats
-        <<-EOS.undent
+        <<~EOS
 
         \033[32m✩ ✩ ✩ ✩   Register your Agent  ✩ ✩ ✩ ✩\033[0m
 
