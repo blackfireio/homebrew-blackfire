@@ -16,7 +16,7 @@ class InvalidPhpVersionError < RuntimeError
 
   def initialize (installed_php_version, required_php_version)
     @name = name
-    super <<-EOS.undent
+    super <<~EOS
       Version of PHP (#{installed_php_version}) in $PATH does not support this extension
              version (#{required_php_version}). Consider installing blackfire-php-#{installed_php_version} with the `--without-homebrew-php` flag.
     EOS
@@ -96,7 +96,7 @@ class AbstractBlackfirePhpExtension < Formula
 
   def config_file
     begin
-      <<-EOS.undent
+      <<~EOS
       [#{extension}]
       extension="#{module_path}"
       EOS
