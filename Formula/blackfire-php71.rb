@@ -16,7 +16,7 @@ class BlackfirePhp71 < AbstractBlackfirePhpExtension
     end
 
     def config_file
-        super + <<-EOS.undent
+        super + <<~EOS
         blackfire.agent_socket = unix:///usr/local/var/run/blackfire-agent.sock
         blackfire.agent_timeout = 0.25
         ;blackfire.log_level = 3
