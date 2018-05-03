@@ -4,14 +4,14 @@ require 'formula'
 
 class BlackfireAgent < Formula
     homepage 'https://blackfire.io'
-    version '1.16.0'
+    version '1.17.0'
 
     if MacOS.prefer_64_bit?
-        url 'http://packages.blackfire.io/homebrew/blackfire-agent_1.16.0_amd64.tar.gz'
-        sha256 '968c7b0094ca50a6e802a0002eba687c5deddf2a39cbb948fcccde9ac28258f5'
+        url 'http://packages.blackfire.io/homebrew/blackfire-agent_1.17.0_amd64.tar.gz'
+        sha256 '685b09740bacdba02a38426eca9fad2c6d6faabb9ebced12e0984c3212354493'
     else
-        url 'http://packages.blackfire.io/homebrew/blackfire-agent_1.16.0_386.tar.gz'
-        sha256 '62f24104d5f5e63991806b1cf22b2fe204249f0376f58c12b33796f191c0eaa8'
+        url 'http://packages.blackfire.io/homebrew/blackfire-agent_1.17.0_386.tar.gz'
+        sha256 '69bac4e44f6b8b680338513b17796447ba87decd3c6e1921e351a2a3e2c6cc47'
     end
 
     depends_on :arch => :intel
