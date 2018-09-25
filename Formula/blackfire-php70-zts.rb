@@ -5,10 +5,10 @@ require File.expand_path("../../Abstract/abstract-blackfire-php-extension", __FI
 class BlackfirePhp70Zts < AbstractBlackfirePhpExtension
     init
     homepage "https://blackfire.io"
-    version '1.22.0'
+    version '1.23.0'
 
-    url 'http://packages.blackfire.io/homebrew/blackfire-php_1.22.0-darwin_amd64-php70-zts.tar.gz'
-    sha256 '5d0252bcc48f8cc3aa51a65358ce358fb36b16e1eef76edcdf237e8bae305f16'
+    url 'http://packages.blackfire.io/homebrew/blackfire-php_1.23.0-darwin_amd64-php70-zts.tar.gz'
+    sha256 'a0137e89e1a1ba064550d5790ff606a277919c1cec8cd175eaedb924af0d9627'
 
     def install
         prefix.install "blackfire.so"
@@ -21,7 +21,15 @@ class BlackfirePhp70Zts < AbstractBlackfirePhpExtension
         blackfire.agent_timeout = 0.25
         ;blackfire.log_level = 3
         ;blackfire.log_file = /tmp/blackfire.log
+
+        ;Sets fine-grained configuration for Probe.
+        ;This should be left blank in most cases. For most installs,
+        ;the server credentials should only be set in the agent.
         ;blackfire.server_id =
+
+        ;Sets fine-grained configuration for Probe.
+        ;This should be left blank in most cases. For most installs,
+        ;the server credentials should only be set in the agent.
         ;blackfire.server_token =
         EOS
     end
