@@ -5,10 +5,10 @@ require File.expand_path("../../Abstract/abstract-blackfire-php-extension", __FI
 class BlackfirePhp73 < AbstractBlackfirePhpExtension
     init
     homepage "https://blackfire.io"
-    version '1.25.0'
+    version '1.26.0'
 
-    url 'http://packages.blackfire.io/homebrew/blackfire-php_1.25.0-darwin_amd64-php73.tar.gz'
-    sha256 'eaa4aa4ba3eb2954041d7ca1fd1dc9f8dcfb4aed496086d4be02ac6175172511'
+    url 'http://packages.blackfire.io/homebrew/blackfire-php_1.26.0-darwin_amd64-php73.tar.gz'
+    sha256 'ff303d0506466358871be5ad04ee4bd99467d34981bebb0717cfbfbc5abdb531'
 
     def install
         prefix.install "blackfire.so"
