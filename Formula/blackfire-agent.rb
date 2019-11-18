@@ -4,10 +4,10 @@ require 'formula'
 
 class BlackfireAgent < Formula
     homepage 'https://blackfire.io'
-    version '1.28.0'
+    version '1.29.0'
 
-    url 'http://packages.blackfire.io/homebrew/blackfire-agent_1.28.0_amd64.tar.gz'
-    sha256 '243f290744a24960a957fe5ec1ceff779d3d9f6d0c06273d7576e00370b5b161'
+    url 'http://packages.blackfire.io/homebrew/blackfire-agent_1.29.0_amd64.tar.gz'
+    sha256 'fe9087239fdf38de6ce17f9cfae471d962b648f99b6150882a9ce0b5d1e58ab6'
 
     depends_on :arch => :intel
 
@@ -18,9 +18,7 @@ class BlackfireAgent < Formula
         sl_etc = etc + 'blackfire'
         sl_etc.mkpath unless sl_etc.exist?
         sl_etc.install 'etc/blackfire/agent.dist'
-        sl_etc.install 'etc/blackfire/agent.json.dist'
         FileUtils.cp sl_etc+'agent.dist', sl_etc+'agent' unless File.exists? sl_etc+'agent'
-        FileUtils.cp sl_etc+'agent.json.dist', sl_etc+'agent.json' unless File.exists? sl_etc+'agent.json'
 
         sl_log = var+'log/blackfire'
         sl_log.mkpath unless sl_log.exist?
