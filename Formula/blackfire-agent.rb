@@ -4,10 +4,10 @@ require 'formula'
 
 class BlackfireAgent < Formula
     homepage 'https://blackfire.io'
-    version '1.34.0'
+    version '1.35.0'
 
-    url 'https://packages.blackfire.io/homebrew/blackfire-agent_1.34.0_amd64.tar.gz'
-    sha256 '906e033eb425c4a3a5d4ec47d5cd5f7d73798309c2fa11a6db4bc64836fee72a'
+    url 'https://packages.blackfire.io/homebrew/blackfire-agent_1.35.0_amd64.tar.gz'
+    sha256 'bb5280ba1439e72e8529808c0b6e598d73c0ec8bd9cf7be7b6fc091b9a6fe2b6'
 
     depends_on :arch => :intel
 
