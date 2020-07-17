@@ -5,10 +5,10 @@ require File.expand_path("../../Abstract/abstract-blackfire-php-extension", __FI
 class BlackfirePhp53 < AbstractBlackfirePhpExtension
     init
     homepage "https://blackfire.io"
-    version '1.34.3'
+    version '1.36.0'
 
-    url 'https://packages.blackfire.io/homebrew/blackfire-php_1.34.3-darwin_amd64-php53.tar.gz'
-    sha256 '448e3a52eb9d84d88cf07b280e337fafd0b9c598ef0f86a42dad91b39e8d81af'
+    url 'https://packages.blackfire.io/homebrew/blackfire-php_1.36.0-darwin_amd64-php53.tar.gz'
+    sha256 '6f449cecac677d09d42eb23c9ae9950196db5139109fb32de9301e1cfd448831'
 
     def install
         prefix.install "blackfire.so"
@@ -18,7 +18,6 @@ class BlackfirePhp53 < AbstractBlackfirePhpExtension
     def config_file
         super + <<~EOS
         blackfire.agent_socket = unix:///usr/local/var/run/blackfire-agent.sock
-        blackfire.agent_timeout = 0.25
         ;blackfire.log_level = 3
         ;blackfire.log_file = /tmp/blackfire.log
 
