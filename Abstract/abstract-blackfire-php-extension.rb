@@ -137,8 +137,8 @@ EOS
       caveats << <<-EOS
 \033[33m* We have detected you have PHP with ZTS enabled.
  Please note that ZTS support is in beta.\033[0m
- Therefore, please contact us on https://blackfire.io using
- the Feedback button if you experience any trouble.
+ Please contact us via https://support.blackfire.io
+ if you experience any trouble.
 EOS
     end
 
