@@ -46,7 +46,7 @@ class AbstractBlackfirePhpExtension < Formula
   end
 
   def php_branch
-    matches = /Php([57]\d+)/.match(self.class.name)
+    matches = /Php([578]\d+)/.match(self.class.name)
     if matches
       matches[1][0] + "." + matches[1][1,matches[1].length-1]
     else
@@ -205,5 +205,12 @@ class BlackfirePhp70Extension < AbstractBlackfirePhpExtension
   def self.init opts=[]
     super()
     depends_on "php70" => opts if build.with?('homebrew-php')
+  end
+end
+
+class BlackfirePhp80Extension < AbstractBlackfirePhpExtension
+  def self.init opts=[]
+    super()
+    depends_on "php80" => opts if build.with?('homebrew-php')
   end
 end
