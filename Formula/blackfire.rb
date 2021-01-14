@@ -4,10 +4,10 @@ require 'formula'
 
 class Blackfire < Formula
     homepage 'https://blackfire.io'
-    version '2.0.0-alpha6'
+    version '2.0.0-alpha7'
 
-    url 'https://packages.blackfire.io/blackfire/2.0.0-alpha6/blackfire-darwin_amd64.tar.gz'
-    sha256 '6b733218ec069a3bc2ee6d1ef9868f68c3f7e9afd7accccea0efb59f3cdcefdc'
+    url 'https://packages.blackfire.io/blackfire/2.0.0-alpha7/blackfire-darwin_amd64.tar.gz'
+    sha256 '4c7fe440ed1898b254a97bad00c0a01421c05d7548b65631469c6f73f9448170'
 
     depends_on :arch => :intel
 
