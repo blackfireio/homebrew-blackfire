@@ -164,7 +164,7 @@ EOS
   def write_config_file
     if config_filepath.file?
       inreplace config_filepath do |s|
-        s.gsub!(/^(zend_)?extension=.+$/, "extension=\"#{module_path}\"")
+        s.gsub!(/^(;)?(zend_)?extension=.+$/, "extension=\"#{module_path}\"")
       end
     elsif config_file
       config_scandir_path.mkpath
