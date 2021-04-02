@@ -4,14 +4,14 @@ require 'formula'
 
 class Blackfire < Formula
     homepage 'https://blackfire.io'
-    version '2.0.0'
+    version '2.1.0'
 
-    url 'https://packages.blackfire.io/blackfire/2.0.0/blackfire-darwin_amd64.pkg.tar.gz'
-    sha256 '449e6e6e8dc5373e6eb894df0a0f247ead451801ad5cd5eacca2a304ea163642'
+    url 'https://packages.blackfire.io/blackfire/2.1.0/blackfire-darwin_amd64.pkg.tar.gz'
+    sha256 '40809dfd37916065f95ea2f5a0aed17463996172ed8b4fb503fd25562edbaecd'
 
     depends_on :arch => :intel
 
-    conflicts_with "blackfire-agent", because: "blackfire (beta) replaces the blackfire-agent package"
+    conflicts_with "blackfire-agent", because: "blackfire replaces the blackfire-agent package"
 
     def install
         bin.install 'usr/bin/blackfire'
