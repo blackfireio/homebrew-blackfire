@@ -2,15 +2,6 @@
 
 require 'formula'
 
-class UnsupportedPhpApiError < RuntimeError
-  attr :name
-
-  def initialize (installed_php_version)
-    @name = name
-    super "Unsupported PHP API Version #{installed_php_version}"
-  end
-end
-
 class InvalidPhpVersionError < RuntimeError
   attr :name
 
@@ -38,9 +29,6 @@ class AbstractBlackfirePhpExtension < Formula
   end
 
   def self.init
-    depends_on :arch => :intel
-    depends_on :arch => :x86_64
-
     option 'without-homebrew-php', "Ignore homebrew PHP and use default instead"
     option 'without-config-file', "Do not install extension config file"
   end
@@ -170,47 +158,5 @@ EOS
       config_scandir_path.mkpath
       config_filepath.write(config_file)
     end
-  end
-end
-
-class BlackfirePhp53Extension < AbstractBlackfirePhpExtension
-  def self.init opts=[]
-    super()
-    depends_on "php53" => opts if build.with?('homebrew-php')
-  end
-end
-
-class BlackfirePhp54Extension < AbstractBlackfirePhpExtension
-  def self.init opts=[]
-    super()
-    depends_on "php54" => opts if build.with?('homebrew-php')
-  end
-end
-
-class BlackfirePhp55Extension < AbstractBlackfirePhpExtension
-  def self.init opts=[]
-    super()
-    depends_on "php55" => opts if build.with?('homebrew-php')
-  end
-end
-
-class BlackfirePhp56Extension < AbstractBlackfirePhpExtension
-  def self.init opts=[]
-    super()
-    depends_on "php56" => opts if build.with?('homebrew-php')
-  end
-end
-
-class BlackfirePhp70Extension < AbstractBlackfirePhpExtension
-  def self.init opts=[]
-    super()
-    depends_on "php70" => opts if build.with?('homebrew-php')
-  end
-end
-
-class BlackfirePhp80Extension < AbstractBlackfirePhpExtension
-  def self.init opts=[]
-    super()
-    depends_on "php80" => opts if build.with?('homebrew-php')
   end
 end
