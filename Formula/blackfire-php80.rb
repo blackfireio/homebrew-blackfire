@@ -5,14 +5,14 @@ require File.expand_path("../../Abstract/abstract-blackfire-php-extension", __FI
 class BlackfirePhp80 < AbstractBlackfirePhpExtension
     init
     homepage "https://blackfire.io"
-    version '1.60.0'
+    version '1.61.0'
 
     if Hardware::CPU.arm?
-        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.60.0-darwin_arm64-php80.tar.gz'
-        sha256 '5654f85a1c1f79599bfd0e5a1e4697534729c8abb05b153dc561199dd657b1d0'
+        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.61.0-darwin_arm64-php80.tar.gz'
+        sha256 'b133da3d4d3ee6d7b61ea7638a22a3aa72da08b97d62e81a5aa34bed844d0696'
     else
-        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.60.0-darwin_amd64-php80.tar.gz'
-        sha256 '6e2bad3a54bbdd70ea090ef214befe82132f96329f740a7fc644adbd5bed7e8f'
+        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.61.0-darwin_amd64-php80.tar.gz'
+        sha256 'cddee6acac94d8d188a8cecc7d0cfe47e74a511c66d74d9f99b4b6a0fb948b2c'
     end
 
     def install
@@ -35,6 +35,10 @@ class BlackfirePhp80 < AbstractBlackfirePhpExtension
         ;This should be left blank in most cases. For most installs,
         ;the server credentials should only be set in the agent.
         ;blackfire.server_token =
+
+        ;Enables Blackfire Monitoring
+        ;Enabled by default since version 1.61.0
+        ;blackfire.apm_enabled = 1
         EOS
     end
 end

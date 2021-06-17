@@ -5,10 +5,10 @@ require File.expand_path("../../Abstract/abstract-blackfire-php-extension", __FI
 class BlackfirePhp70Zts < AbstractBlackfirePhpExtension
     init
     homepage "https://blackfire.io"
-    version '1.60.0'
+    version '1.61.0'
 
-    url 'https://packages.blackfire.io/homebrew/blackfire-php_1.60.0-darwin_amd64-php70-zts.tar.gz'
-    sha256 'b74e5b72bc1abde0bf43e50127968a1122df234195dd5f4cd79b3bad29bf7e32'
+    url 'https://packages.blackfire.io/homebrew/blackfire-php_1.61.0-darwin_amd64-php70-zts.tar.gz'
+    sha256 '6668926b1e6f4fffaf1b79f6c2824232c7d319c5ca0d7974475f290ae6982c92'
 
     def install
         prefix.install "blackfire.so"
@@ -30,6 +30,10 @@ class BlackfirePhp70Zts < AbstractBlackfirePhpExtension
         ;This should be left blank in most cases. For most installs,
         ;the server credentials should only be set in the agent.
         ;blackfire.server_token =
+
+        ;Enables Blackfire Monitoring
+        ;Enabled by default since version 1.61.0
+        ;blackfire.apm_enabled = 1
         EOS
     end
 end
