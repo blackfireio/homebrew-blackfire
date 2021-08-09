@@ -9,10 +9,10 @@ class BlackfirePhp74 < AbstractBlackfirePhpExtension
 
     if Hardware::CPU.arm?
         url 'https://packages.blackfire.io/homebrew/blackfire-php_1.65.0-darwin_arm64-php74.tar.gz'
-        sha256 'aab1d80e5be713e1d2bde4985e4cf4bbda27e51da00b3dd154afaf32ee867334'
+        sha256 '3f47c14e9e6d657900e4e1b916a2ad468fe317982a01cec373a5952470650584'
     else
         url 'https://packages.blackfire.io/homebrew/blackfire-php_1.65.0-darwin_amd64-php74.tar.gz'
-        sha256 'fd79968cf11a8b98c87bd667b9269b1928689bbcd11975e33ad5671ab4ad8a98'
+        sha256 '6b0c6f23e1019f1f9d640bb08fd16a111665414e80099db1204c912875b91fcd'
     end
 
     def install

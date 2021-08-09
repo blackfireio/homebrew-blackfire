@@ -9,10 +9,10 @@ class BlackfirePhp80 < AbstractBlackfirePhpExtension
 
     if Hardware::CPU.arm?
         url 'https://packages.blackfire.io/homebrew/blackfire-php_1.65.0-darwin_arm64-php80.tar.gz'
-        sha256 '5f8f027b60816419a81417a1eaf25091e9c2d534910091ba2810772e61f65ee8'
+        sha256 'a2c7b621c9730a38aac0a6e2117bf0b59ce648562647b8dd580c8a5d1e5fec1c'
     else
         url 'https://packages.blackfire.io/homebrew/blackfire-php_1.65.0-darwin_amd64-php80.tar.gz'
-        sha256 '6283e2c743fb301f31034ac73b3c830bda945c88a9a6560116537a53b5f9672d'
+        sha256 'bd50fe854a323d4955485384400fa776fd3fce45667a61dcae3e9da645884e3b'
     end
 
     def install

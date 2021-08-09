@@ -8,7 +8,7 @@ class BlackfirePhp73Zts < AbstractBlackfirePhpExtension
     version '1.65.0'
 
     url 'https://packages.blackfire.io/homebrew/blackfire-php_1.65.0-darwin_amd64-php73-zts.tar.gz'
-    sha256 '721b9e12904b798ece616c143074b820dc4480deb4268622d58c1a3fe2ef8507'
+    sha256 'ea08278a6d0f265021a21ce72324948acbee6cc74b0d4a47d9504a47e69ad2c6'
 
     def install
         prefix.install "blackfire.so"
