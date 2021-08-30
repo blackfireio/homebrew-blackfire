@@ -5,14 +5,14 @@ require File.expand_path("../../Abstract/abstract-blackfire-php-extension", __FI
 class BlackfirePhp80 < AbstractBlackfirePhpExtension
     init
     homepage "https://blackfire.io"
-    version '1.65.0'
+    version '1.66.0'
 
     if Hardware::CPU.arm?
-        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.65.0-darwin_arm64-php80.tar.gz'
-        sha256 'a2c7b621c9730a38aac0a6e2117bf0b59ce648562647b8dd580c8a5d1e5fec1c'
+        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.66.0-darwin_arm64-php80.tar.gz'
+        sha256 'b152a38dd375cf11e36508393d51c8f06dea6ae98dcad10feed6badf668f0ed2'
     else
-        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.65.0-darwin_amd64-php80.tar.gz'
-        sha256 'bd50fe854a323d4955485384400fa776fd3fce45667a61dcae3e9da645884e3b'
+        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.66.0-darwin_amd64-php80.tar.gz'
+        sha256 '98c739885c9d8abd4af03490c77fac8b076a70593c8e8207f7f2b3eaefcd79b0'
     end
 
     def install
@@ -21,8 +21,15 @@ class BlackfirePhp80 < AbstractBlackfirePhpExtension
     end
 
     def config_file
+        if Hardware::CPU.arm?
+            agent_socket = 'unix:///opt/homebrew/var/run/blackfire-agent.sock'
+        else
+            agent_socket = 'unix:///usr/local/var/run/blackfire-agent.sock'
+        end
+
         super + <<~EOS
-        blackfire.agent_socket = unix:///usr/local/var/run/blackfire-agent.sock
+        blackfire.agent_socket = #{agent_socket}
+
         ;blackfire.log_level = 3
         ;blackfire.log_file = /tmp/blackfire.log
 

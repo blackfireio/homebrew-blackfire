@@ -5,14 +5,14 @@ require File.expand_path("../../Abstract/abstract-blackfire-php-extension", __FI
 class BlackfirePhp74Zts < AbstractBlackfirePhpExtension
     init
     homepage "https://blackfire.io"
-    version '1.65.0'
+    version '1.66.0'
 
     if Hardware::CPU.arm?
-        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.65.0-darwin_arm64-php74-zts.tar.gz'
-        sha256 'f5a5cfcbc387e06f1a636595ba1810a48aefae9aa64c157d093d59238968d43b'
+        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.66.0-darwin_arm64-php74-zts.tar.gz'
+        sha256 '0b4b1e5b7b69dcfc2e8301ae2631cce9acb246639f82e54d719b86d3f1dbcf03'
     else
-        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.65.0-darwin_amd64-php74-zts.tar.gz'
-        sha256 '6f887537bf9ad53e03197892133727d034fc741f992a188d251d636a1d805aa0'
+        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.66.0-darwin_amd64-php74-zts.tar.gz'
+        sha256 '1ac1aa25861bd0ddd09c718955edf02fd6342f62fa1549c7d4e60a798d297cb1'
     end
 
     def install
@@ -21,8 +21,15 @@ class BlackfirePhp74Zts < AbstractBlackfirePhpExtension
     end
 
     def config_file
+        if Hardware::CPU.arm?
+            agent_socket = 'unix:///opt/homebrew/var/run/blackfire-agent.sock'
+        else
+            agent_socket = 'unix:///usr/local/var/run/blackfire-agent.sock'
+        end
+
         super + <<~EOS
-        blackfire.agent_socket = unix:///usr/local/var/run/blackfire-agent.sock
+        blackfire.agent_socket = #{agent_socket}
+
         ;blackfire.log_level = 3
         ;blackfire.log_file = /tmp/blackfire.log
 
