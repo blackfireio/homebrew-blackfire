@@ -7,9 +7,15 @@ class BlackfirePhp73 < AbstractBlackfirePhpExtension
     homepage "https://blackfire.io"
     version '1.80.0'
 
-    url 'https://packages.blackfire.io/homebrew/blackfire-php_1.80.0-darwin_amd64-php73.tar.gz'
-    sha256 '7f7149485b139d2595925139bee2a5444ff83696748e66c301887bfe7e54a533'
 
+    if Hardware::CPU.arm?
+        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.80.0-darwin_arm64-php73.tar.gz'
+        sha256 'TODO'
+    else
+        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.80.0-darwin_amd64-php73.tar.gz'
+        sha256 '7f7149485b139d2595925139bee2a5444ff83696748e66c301887bfe7e54a533'
+    end
+    
     def install
         prefix.install "blackfire.so"
         write_config_file
