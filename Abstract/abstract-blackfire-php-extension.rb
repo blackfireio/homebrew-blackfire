@@ -15,9 +15,7 @@ class InvalidPhpVersionError < RuntimeError
 end
 
 class AbstractBlackfirePhpExtension < Formula
-  def initialize(*)
-    super
-
+  def check_php_version
     if build.without? 'homebrew-php'
       installed_php_version = php_version
 
