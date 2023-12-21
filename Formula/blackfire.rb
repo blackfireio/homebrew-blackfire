@@ -4,14 +4,14 @@ require 'formula'
 
 class Blackfire < Formula
     homepage 'https://blackfire.io'
-    version '2.24.1'
+    version '2.24.2'
 
     if Hardware::CPU.arm?
-        url 'https://packages.blackfire.io/blackfire/2.24.1/blackfire-darwin_arm64.pkg.tar.gz'
-        sha256 'a6959e3fccaa8136441f631243051d963a67b43c065c0b9a5de19324c865c666'
+        url 'https://packages.blackfire.io/blackfire/2.24.2/blackfire-darwin_arm64.pkg.tar.gz'
+        sha256 'ce66cb0e740bda824c1007259acd6034b38e003ebc12cbde100d32cdb0dc16f3'
     else
-        url 'https://packages.blackfire.io/blackfire/2.24.1/blackfire-darwin_amd64.pkg.tar.gz'
-        sha256 '64d390bc7f205b904432871dcca2663d9d9454656a38da128189225a2d7f5efa'
+        url 'https://packages.blackfire.io/blackfire/2.24.2/blackfire-darwin_amd64.pkg.tar.gz'
+        sha256 'd4f7a398b17061745eb49e16ba4419fa6f4766ea31bd4c54f61d045e52c718e4'
     end
 
     conflicts_with "blackfire-agent", because: "blackfire replaces the blackfire-agent package"
@@ -32,33 +32,20 @@ class Blackfire < Formula
 
         watchdir = var+'lib/blackfire/traces'
         watchdir.mkpath unless watchdir.exist?
+
+        inreplace "macos_blackfire.plist" do |s|
+            s.gsub!("\#{plist_name}", "#{plist_name}")
+            s.gsub!("\#{bin}", "#{bin}")
+            s.gsub!("\#{etc}", "#{etc}")
+            s.gsub!("\#{var}", "#{var}")
+            s.gsub!("\#{HOMEBREW_PREFIX}", "#{HOMEBREW_PREFIX}")
+        end
+        prefix.install Dir["*"]
+        prefix.install_symlink "macos_blackfire.plist" => "#{plist_name}.plist"
     end
 
-    def plist; <<~EOS
-        <?xml version="1.0" encoding="UTF-8"?>
-        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-            <plist version="1.0">
-                <dict>
-                    <key>KeepAlive</key>
-                    <true/>
-                    <key>Label</key>
-                    <string>#{plist_name}</string>
-                    <key>ProgramArguments</key>
-                    <array>
-                        <string>#{bin}/blackfire</string>
-                        <string>agent:start</string>
-                        <string>--config</string>
-                        <string>#{etc}/blackfire/agent</string>
-                        <string>--log-file</string>
-                        <string>#{var}/log/blackfire/agent.log</string>
-                    </array>
-                    <key>RunAtLoad</key>
-                    <true/>
-                    <key>WorkingDirectory</key>
-                    <string>#{HOMEBREW_PREFIX}</string>
-            </dict>
-        </plist>
-        EOS
+    service do
+        name macos: "#{plist_name}"
     end
 
     def caveats
