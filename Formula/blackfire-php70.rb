@@ -5,10 +5,10 @@ require File.expand_path("../../Abstract/abstract-blackfire-php-extension", __FI
 class BlackfirePhp70 < AbstractBlackfirePhpExtension
     init
     homepage "https://blackfire.io"
-    version '1.92.8'
+    version '1.92.9'
 
-    url 'https://packages.blackfire.io/homebrew/blackfire-php_1.92.8-darwin_amd64-php70.tar.gz'
-    sha256 'b21c4461712f4e744af9a0cbe9de48cc7adc62c35c1845dbbad345b51b86c29c'
+    url 'https://packages.blackfire.io/homebrew/blackfire-php_1.92.9-darwin_amd64-php70.tar.gz'
+    sha256 '6da907a17b0cbd95a1070829dbce88159cbee14dfffa5e80f28d9838623c75b8'
 
     def install
         check_php_version
