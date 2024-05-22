@@ -18,7 +18,7 @@ class BlackfireAgent < Formula
         sl_etc = etc + 'blackfire'
         sl_etc.mkpath unless sl_etc.exist?
         sl_etc.install 'etc/blackfire/agent.dist'
-        FileUtils.cp sl_etc+'agent.dist', sl_etc+'agent' unless File.exists? sl_etc+'agent'
+        FileUtils.cp sl_etc+'agent.dist', sl_etc+'agent' unless File.exist? sl_etc+'agent'
 
         sl_log = var+'log/blackfire'
         sl_log.mkpath unless sl_log.exist?
