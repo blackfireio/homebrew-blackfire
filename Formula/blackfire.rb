@@ -4,14 +4,14 @@ require 'formula'
 
 class Blackfire < Formula
     homepage 'https://blackfire.io'
-    version '2.28.2'
+    version '2.28.3'
 
     if Hardware::CPU.arm?
-        url 'https://packages.blackfire.io/blackfire/2.28.2/blackfire-darwin_arm64.pkg.tar.gz'
-        sha256 '6eb70ec9af6eaa27065c655182060feb288eae2868ef3adb3b96f71755cc5be3'
+        url 'https://packages.blackfire.io/blackfire/2.28.3/blackfire-darwin_arm64.pkg.tar.gz'
+        sha256 '2021b4486073a52428ba0fb9925ee4434e50d3ed0100a76145d514c3180f11be'
     else
-        url 'https://packages.blackfire.io/blackfire/2.28.2/blackfire-darwin_amd64.pkg.tar.gz'
-        sha256 '33dd2df754933ed2e75b7c9de60be1342d1143c6832cf99d5d5edd674de0a7fe'
+        url 'https://packages.blackfire.io/blackfire/2.28.3/blackfire-darwin_amd64.pkg.tar.gz'
+        sha256 'a9b8452bc39eef9eb9b0e40c184ebc4e5c98375079ea493689b8818835b0ed51'
     end
 
     conflicts_with "blackfire-agent", because: "blackfire replaces the blackfire-agent package"
@@ -22,7 +22,7 @@ class Blackfire < Formula
         sl_etc = etc + 'blackfire'
         sl_etc.mkpath unless sl_etc.exist?
         sl_etc.install 'etc/blackfire/agent.dist'
-        FileUtils.cp sl_etc+'agent.dist', sl_etc+'agent' unless File.exists? sl_etc+'agent'
+        FileUtils.cp sl_etc+'agent.dist', sl_etc+'agent' unless File.exist? sl_etc+'agent'
 
         sl_log = var+'log/blackfire'
         sl_log.mkpath unless sl_log.exist?
