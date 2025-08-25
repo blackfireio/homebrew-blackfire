@@ -5,14 +5,14 @@ require File.expand_path("../../Abstract/abstract-blackfire-php-extension", __FI
 class BlackfirePhp81 < AbstractBlackfirePhpExtension
     init
     homepage "https://blackfire.io"
-    version '1.92.40'
+    version '1.92.41'
 
     if Hardware::CPU.arm?
-        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.92.40-darwin_arm64-php81.tar.gz'
-        sha256 'a07ba42e18845560ecf3f8c152f851f84c918e2d86d4af7055e97eb679d71489'
+        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.92.41-darwin_arm64-php81.tar.gz'
+        sha256 '79464d13cbad1f47b9c17dde1adb2cf949da754d68bc4017b3d9fe5209b45020'
     else
-        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.92.40-darwin_amd64-php81.tar.gz'
-        sha256 'c1f40cb48afcaa76fde47ea2a6393c492b8f2310b5b56d669e6870a1972d3948'
+        url 'https://packages.blackfire.io/homebrew/blackfire-php_1.92.41-darwin_amd64-php81.tar.gz'
+        sha256 '800e1627086d4a98485a1a014f5413557c171a27c4bd3804abe1ef1cc5c8d137'
     end
 
     def install
