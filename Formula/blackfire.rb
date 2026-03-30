@@ -4,14 +4,14 @@ require 'formula'
 
 class Blackfire < Formula
     homepage 'https://blackfire.io'
-    version '2026.3.0'
+    version '2026.3.1'
 
     if Hardware::CPU.arm?
-        url 'https://packages.blackfire.io/blackfire/2026.3.0/blackfire-darwin_arm64.pkg.tar.gz'
-        sha256 '15a2400133d9c57993a5ad3558841ef041ae0f6664b882ff2055e5740312fed8'
+        url 'https://packages.blackfire.io/blackfire/2026.3.1/blackfire-darwin_arm64.pkg.tar.gz'
+        sha256 'fa9ac08356a5b503996c996026f59ad70a486a39b6cff197a22f7c7fac27d43e'
     else
-        url 'https://packages.blackfire.io/blackfire/2026.3.0/blackfire-darwin_amd64.pkg.tar.gz'
-        sha256 '8c34e03da48df9b97d73dc2ea96fbf8e9c5888b778d26f8e14d33f45bfb28331'
+        url 'https://packages.blackfire.io/blackfire/2026.3.1/blackfire-darwin_amd64.pkg.tar.gz'
+        sha256 '85cf9d7f173126ab465b7d70d5a78eb737d7b0105810fc5d9ad8311347976c8a'
     end
 
     conflicts_with "blackfire-agent", because: "blackfire replaces the blackfire-agent package"
